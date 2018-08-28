@@ -15,13 +15,12 @@ $("#form").submit(function(event) {
 	getWeather(city, state, zip);
 
 	// hide form
-	$("#form").toggle();
-
-	$("title").append(address, ", ", city, ", ", state, ", ", zip, ":");
-
-
-	// show results div
-	$("#results").toggle();
+	$("#form").toggle(function() {
+		$("#title").append(address + ", " + city + ", " + state + ", " + zip + ":");
+	
+		// show results div
+		$("#results").toggle();
+	});
 
 });
 
@@ -29,5 +28,18 @@ $("#form").submit(function(event) {
 
 function getWeather(city, state, zip) {
 	// GET WEATHER FROM API
-	console.log('get weather from api');
-}
+	$.get("http://api.openweathermap.org/data/2.5/weather?zip=" + zip + "&units=imperial&APPID=61ed99bc6d6296086845054ce0c24986")
+		.done(function(data) {
+			var tempCurrent = JSON.stringify(data.main.temp);
+			var tempHigh = JSON.stringify(data.main.temp_max);
+			var tempLow = JSON.stringify(data.main.temp_min);
+			$("#temp-current").append(tempCurrent);			
+			$("#temp-high").append(tempHigh);
+			$("#temp-low").append(tempLow);
+
+		})
+		.fail(function(xhr) {
+			console.log('error', xhr)
+	});
+
+};
