@@ -6,28 +6,31 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css">	
 	</head>
 	<body>
-		<div id="main-container">
-
-			<form id="form">
-				Address:<br>
-				<input type="text" id="address"><br>
-				City:<br>
-				<input type="text" id="city"><br>
-				State:<br>
-				<input type="text" id="state"><br>
-				Zip:<br>
-				<input type="text" id="zip"><br>
-				<input type="submit" value="Go">
-			</form>
+		<div class="main-container">
+			<div id="form-container">
+				<form id="form">
+					Address:<br>
+					<input class="field" type="text" id="address"><br>
+					City:<br>
+					<input class="field" type="text" id="city"><br>
+					State:<br>
+					<input class="field" type="text" id="state"><br>
+					Zip:<br>
+					<input class="field" type="text" id="zip"><br>
+					<input id="submit-button" type="submit" value="Go">
+				</form>
+			</div>
 
 			<div id="results">
 				<h4 id="title">Current weather for <h4>
 				<div id="data">
-					<p id="temp-current">Current temperature: </p>
-					<p id="temp-high">Today's High: </p>
-					<p id="temp-low">Today's Low: </p>
+					<p id="description"></p>
+					<p id="temp-current"></p>
 				</div>
 				<div id="cached"><p>Using cached data</p></div>
+			</div>
+
+			<div>
 			</div>
 		</div>
 

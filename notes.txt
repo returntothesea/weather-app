@@ -1,10 +1,17 @@
 To do:
 
-* Indicate to user if viewing cached data
+x Indicate to user if viewing cached data
 * Styling
-* Error handling for
-	> Not connecting to server
-	> Missing field values (validations before submitting)
+* Error handling for:
+	> Not connecting to cache server
+	> Field value issues including:
+		> Missing field values (validations before submitting or not displaying missing fields)
+		> Only allowing numbers / having a number limit on ZIP code
+			> Somehow validating ZIP code before querying weather API with it or
+			> General error page for if weather api fails
+
+* Extended forecast / daily high and low
+	> Turns out "max" and "min" from the api I am using do not mean "high" and "low" like I thought.
 
 
 

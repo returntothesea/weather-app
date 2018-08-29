@@ -11,7 +11,7 @@ $(document).ready(function() {
 		getWeather(zip);
 
 		// hide form
-		$("#form").toggle(function() {
+		$("#form-container").toggle(function() {
 			$("#title").append(address + ", " + city + ", " + state + ", " + zip + ":");
 		
 			// show results div
@@ -70,13 +70,15 @@ function getFromWeatherApi(zip, flag, id=0) {
 					type: "PATCH"
 				});
 			}
+		})
+		.fail(function(error) {
+			console.log(error);
 		});
 };
 
 function pushDataToDOM(data) {
-	$("#temp-current").append(JSON.stringify(data.main.temp));
-	$("#temp-high").append(JSON.stringify(data.main.temp_max));
-	$("#temp-low").append(JSON.stringify(data.main.temp_min));
+	$("#description").append(JSON.stringify(data.weather[0].description).replace(/"/g, ""));
+	$("#temp-current").append(JSON.stringify(data.main.temp) + " F");
 };
 
 
