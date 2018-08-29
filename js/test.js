@@ -1,28 +1,8 @@
 $(document).ready(function() {
 
-	$("#form").submit(function(event) {
-		event.preventDefault();
-
-		var address = $("#address").val();
-		var city = $("#city").val();
-		var state = $("#state").val();
-		var zip = $("#zip").val();
-
-		getWeather(zip);
-
-		// hide form
-		$("#form").toggle(function() {
-			$("#title").append(address + ", " + city + ", " + state + ", " + zip + ":");
-		
-			// show results div
-			$("#results").toggle();
-		});
-
-
-	});
+	getWeather(95404);
 
 });
-
 
 function getWeather(zip) {
 	// Check chache database first
@@ -43,7 +23,7 @@ function getWeather(zip) {
 				}
 			} else {
 				console.log("data doesn't exist in cache yet, getting from weather api");
-				// Get data from weather api and create in cache
+				// GET FROM WEATHER API AND CREATE IN CACHE
 				getFromWeatherApi(zip, "create");
 			}
 		});
@@ -51,8 +31,11 @@ function getWeather(zip) {
 
 
 function getFromWeatherApi(zip, flag, id=0) {
+	console.log(flag);
+	console.log("getting info for " + zip + " from weather api")
 	$.get("http://api.openweathermap.org/data/2.5/weather?zip=" + zip + "&units=imperial&APPID=61ed99bc6d6296086845054ce0c24986")
 		.done(function(data) {
+			console.log(data);
 			// UPDATE DOM FROM DATA
 			pushDataToDOM(data);
 
@@ -72,6 +55,7 @@ function getFromWeatherApi(zip, flag, id=0) {
 };
 
 function pushDataToDOM(data) {
+	console.log(data);
 	$("#temp-current").append(JSON.stringify(data.main.temp));
 	$("#temp-high").append(JSON.stringify(data.main.temp_max));
 	$("#temp-low").append(JSON.stringify(data.main.temp_min));
@@ -84,6 +68,7 @@ function expired(dateString) {
 	var updated = new Date(Date.parse(dateString));
 	var now = new Date();
 
+	console.log(now - updated);
 	// if the time now less the timestamp of the cache's latest update is greater than
 	// 1800000 aka 30 mins, return true
 	if ((now - updated) > 1800000) {
