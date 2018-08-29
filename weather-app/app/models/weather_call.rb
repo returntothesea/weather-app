@@ -1,0 +1,2 @@
+class WeatherCall < ApplicationRecord
+end

@@ -1,0 +1,24 @@
+NEW GETWEATHER FUNCTION:
+
+getWeather(zip) {
+	$.get( [API ADDRESS] + zip )
+		.done(function(data) {
+			if ( [DATA EXISTS] ) {
+				if( [DATA WAS CREATED / MODIFIED < 30 MINS AGO] ) {
+					[POST TO DOM FROM DATA]
+				} else {
+					$.get( [WEATHER API ADDRESS]  + zip )
+						.done(function(data) {
+							[PUT TO DB USING DATA ID]
+							[POST TO DOM FROM DATA]
+						});
+				}
+			} else {
+				$.get( [WEATHER API ADDRESS] + zip )
+					.done(function(data) {
+						[POST TO DB]
+						[POST TO DOM]
+					});
+			}
+		});
+};

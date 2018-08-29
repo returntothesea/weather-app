@@ -1,29 +1,27 @@
 $(document).ready(function() {
 
+	$("#form").submit(function(event) {
+		event.preventDefault();
+
+		var address = $("#address").val();
+		var city = $("#city").val();
+		var state = $("#state").val();
+		var zip = $("#zip").val();
+
+		getWeather(city, state, zip);
+
+		// hide form
+		$("#form").toggle(function() {
+			$("#title").append(address + ", " + city + ", " + state + ", " + zip + ":");
+		
+			// show results div
+			$("#results").toggle();
+		});
 
 
-});
-
-$("#form").submit(function(event) {
-	event.preventDefault();
-
-	var address = $("#address").val();
-	var city = $("#city").val();
-	var state = $("#state").val();
-	var zip = $("#zip").val();
-
-	getWeather(city, state, zip);
-
-	// hide form
-	$("#form").toggle(function() {
-		$("#title").append(address + ", " + city + ", " + state + ", " + zip + ":");
-	
-		// show results div
-		$("#results").toggle();
 	});
 
 });
-
 
 
 function getWeather(city, state, zip) {
