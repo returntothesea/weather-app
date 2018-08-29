@@ -1,3 +1,26 @@
+To do:
+
+* Indicate to user if viewing cached data
+* Styling
+* Error handling for
+	> Not connecting to server
+	> Missing field values (validations before submitting)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 NEW GETWEATHER FUNCTION:
 
 getWeather(zip) {

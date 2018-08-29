@@ -40,6 +40,8 @@ function getWeather(zip) {
 					console.log("data in cache is not expired");
 					// Otherwise just use data from cache
 					pushDataToDOM(JSON.parse(data.response));
+					// And set the notification for using cached data to visible.
+					$("#cached").show();
 				}
 			} else {
 				console.log("data doesn't exist in cache yet, getting from weather api");
